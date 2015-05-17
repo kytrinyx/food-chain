@@ -11,23 +11,42 @@ module FoodChain
     case number
     when 1
       "I know an old lady who swallowed #{morsel(number)}.\n" \
+      "#{aside(number)}" \
       "I don't know why she swallowed the fly. Perhaps she'll die."
     when 2..7
       "I know an old lady who swallowed #{morsel(number)}.\n" \
-      "#{aside(number)}\n" \
+      "#{aside(number)}" \
       "#{chain(number)}" \
       "I don't know why she swallowed the fly. Perhaps she'll die."
     when 8
       "I know an old lady who swallowed #{morsel(number)}.\n" \
+      "#{aside(number)}" \
       "She's dead, of course!"
     end
   end
 
-  def self.chain(i)
-    i.downto(2).map {|number|
-      "She swallowed #{predator(number)} to catch #{prey(number)}.\n"
+  ## song-level stuff?
+
+  def self.chain(number)
+    number.downto(2).map {|i|
+      "She swallowed #{predator(i)} to catch #{prey(i)}.\n"
     }.join("")
   end
+
+  def self.aside(number)
+    [
+     "",
+    "It wriggled and jiggled and tickled inside her.\n",
+    "How absurd to swallow a bird!\n",
+    "Imagine that, to swallow a cat!\n",
+    "What a hog, to swallow a dog!\n",
+    "Just opened her throat and swallowed a goat!\n",
+    "I don't know how she swallowed a cow!\n",
+    ""
+    ][number-1]
+  end
+
+  ## critter-type stuff?
 
   def self.morsel(i)
     [
@@ -39,18 +58,6 @@ module FoodChain
       "a goat",
       "a cow",
       "a horse",
-    ][i-1]
-  end
-
-  def self.aside(i)
-    [
-     nil,
-    "It wriggled and jiggled and tickled inside her.",
-    "How absurd to swallow a bird!",
-    "Imagine that, to swallow a cat!",
-    "What a hog, to swallow a dog!",
-    "Just opened her throat and swallowed a goat!",
-    "I don't know how she swallowed a cow!",
     ][i-1]
   end
 
