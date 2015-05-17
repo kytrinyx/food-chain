@@ -8,29 +8,40 @@ module FoodChain
   end
 
   def self.verse(number)
-    case number
-    when 1
-      "I know an old lady who swallowed #{morsel(number)}.\n" \
-      "#{aside(number)}" \
-      "I don't know why she swallowed the fly. Perhaps she'll die."
-    when 2..7
-      "I know an old lady who swallowed #{morsel(number)}.\n" \
-      "#{aside(number)}" \
-      "#{chain(number)}" \
-      "I don't know why she swallowed the fly. Perhaps she'll die."
-    when 8
-      "I know an old lady who swallowed #{morsel(number)}.\n" \
-      "#{aside(number)}" \
-      "She's dead, of course!"
-    end
+    [
+      opening(number),
+      aside(number),
+      chain(number),
+      conclusion(number),
+    ].join("")
   end
 
   ## song-level stuff?
 
+  def self.opening(number)
+    "I know an old lady who swallowed #{morsel(number)}.\n"
+  end
+
+  def self.conclusion(number)
+    if number == 8
+      "She's dead, of course!"
+    else
+      "I don't know why she swallowed the fly. Perhaps she'll die."
+    end
+  end
+
+  # well, this is kind of awful.
   def self.chain(number)
-    number.downto(2).map {|i|
-      "She swallowed #{predator(i)} to catch #{prey(i)}.\n"
-    }.join("")
+    case number
+    when 1, 8
+      ""
+    else
+      number.downto(2).map {|i| motivation(i) }.join("")
+    end
+  end
+
+  def self.motivation(number)
+    "She swallowed #{predator(number)} to catch #{prey(number)}.\n"
   end
 
   def self.aside(number)
