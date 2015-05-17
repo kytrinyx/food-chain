@@ -15,25 +15,25 @@ module FoodChain
     when 2
       "I know an old lady who swallowed #{morsel(number)}.\n" \
       "#{aside(number)}\n" \
-      "She swallowed the spider to catch the fly.\n" \
+      "She swallowed #{predator(number)} to catch #{prey(number)}.\n" \
       "I don't know why she swallowed the fly. Perhaps she'll die."
     when 3
       "I know an old lady who swallowed #{morsel(number)}.\n" \
       "#{aside(number)}\n" \
-      "She swallowed the bird to catch the spider that wriggled and jiggled and tickled inside her.\n" \
+      "She swallowed #{predator(number)} to catch #{prey(number)}.\n" \
       "She swallowed the spider to catch the fly.\n" \
       "I don't know why she swallowed the fly. Perhaps she'll die."
     when 4
       "I know an old lady who swallowed #{morsel(number)}.\n" \
       "#{aside(number)}\n" \
-      "She swallowed the cat to catch the bird.\n" \
+      "She swallowed #{predator(number)} to catch #{prey(number)}.\n" \
       "She swallowed the bird to catch the spider that wriggled and jiggled and tickled inside her.\n" \
       "She swallowed the spider to catch the fly.\n" \
       "I don't know why she swallowed the fly. Perhaps she'll die."
     when 5
       "I know an old lady who swallowed #{morsel(number)}.\n" \
       "#{aside(number)}\n" \
-      "She swallowed the dog to catch the cat.\n" \
+      "She swallowed #{predator(number)} to catch #{prey(number)}.\n" \
       "She swallowed the cat to catch the bird.\n" \
       "She swallowed the bird to catch the spider that wriggled and jiggled and tickled inside her.\n" \
       "She swallowed the spider to catch the fly.\n" \
@@ -41,7 +41,7 @@ module FoodChain
     when 6
       "I know an old lady who swallowed #{morsel(number)}.\n" \
       "#{aside(number)}\n" \
-      "She swallowed the goat to catch the dog.\n" \
+      "She swallowed #{predator(number)} to catch #{prey(number)}.\n" \
       "She swallowed the dog to catch the cat.\n" \
       "She swallowed the cat to catch the bird.\n" \
       "She swallowed the bird to catch the spider that wriggled and jiggled and tickled inside her.\n" \
@@ -50,7 +50,7 @@ module FoodChain
     when 7
       "I know an old lady who swallowed #{morsel(number)}.\n" \
       "#{aside(number)}\n" \
-      "She swallowed the cow to catch the goat.\n" \
+      "She swallowed #{predator(number)} to catch #{prey(number)}.\n" \
       "She swallowed the goat to catch the dog.\n" \
       "She swallowed the dog to catch the cat.\n" \
       "She swallowed the cat to catch the bird.\n" \
@@ -85,6 +85,36 @@ module FoodChain
     "What a hog, to swallow a dog!",
     "Just opened her throat and swallowed a goat!",
     "I don't know how she swallowed a cow!",
+    ][i-1]
+  end
+
+  # In what universe does a goat eat a dog
+  # and a cow eat a goat and a horse eat a cow?
+  # They all eat grass. This is plain silly.
+  def self.predator(i)
+    [
+      nil,
+      "the spider",
+      "the bird",
+      "the cat",
+      "the dog",
+      "the goat",
+      "the cow",
+      "the horse",
+    ][i-1]
+  end
+
+  def self.prey(i)
+    [
+      nil,
+      "the fly",
+      "the spider that wriggled and jiggled and tickled inside her",
+      "the bird",
+      "the cat",
+      "the dog",
+      "the goat",
+      "the cow",
+      "the horse",
     ][i-1]
   end
 end
