@@ -14,25 +14,25 @@ module FoodChain
       "I don't know why she swallowed the fly. Perhaps she'll die."
     when 2
       "I know an old lady who swallowed #{morsel(number)}.\n" \
-      "It wriggled and jiggled and tickled inside her.\n" \
+      "#{aside(number)}\n" \
       "She swallowed the spider to catch the fly.\n" \
       "I don't know why she swallowed the fly. Perhaps she'll die."
     when 3
       "I know an old lady who swallowed #{morsel(number)}.\n" \
-      "How absurd to swallow a bird!\n" \
+      "#{aside(number)}\n" \
       "She swallowed the bird to catch the spider that wriggled and jiggled and tickled inside her.\n" \
       "She swallowed the spider to catch the fly.\n" \
       "I don't know why she swallowed the fly. Perhaps she'll die."
     when 4
       "I know an old lady who swallowed #{morsel(number)}.\n" \
-      "Imagine that, to swallow a cat!\n" \
+      "#{aside(number)}\n" \
       "She swallowed the cat to catch the bird.\n" \
       "She swallowed the bird to catch the spider that wriggled and jiggled and tickled inside her.\n" \
       "She swallowed the spider to catch the fly.\n" \
       "I don't know why she swallowed the fly. Perhaps she'll die."
     when 5
       "I know an old lady who swallowed #{morsel(number)}.\n" \
-      "What a hog, to swallow a dog!\n" \
+      "#{aside(number)}\n" \
       "She swallowed the dog to catch the cat.\n" \
       "She swallowed the cat to catch the bird.\n" \
       "She swallowed the bird to catch the spider that wriggled and jiggled and tickled inside her.\n" \
@@ -40,7 +40,7 @@ module FoodChain
       "I don't know why she swallowed the fly. Perhaps she'll die."
     when 6
       "I know an old lady who swallowed #{morsel(number)}.\n" \
-      "Just opened her throat and swallowed a goat!\n" \
+      "#{aside(number)}\n" \
       "She swallowed the goat to catch the dog.\n" \
       "She swallowed the dog to catch the cat.\n" \
       "She swallowed the cat to catch the bird.\n" \
@@ -49,7 +49,7 @@ module FoodChain
       "I don't know why she swallowed the fly. Perhaps she'll die."
     when 7
       "I know an old lady who swallowed #{morsel(number)}.\n" \
-      "I don't know how she swallowed a cow!\n" \
+      "#{aside(number)}\n" \
       "She swallowed the cow to catch the goat.\n" \
       "She swallowed the goat to catch the dog.\n" \
       "She swallowed the dog to catch the cat.\n" \
@@ -73,6 +73,18 @@ module FoodChain
       "a goat",
       "a cow",
       "a horse",
+    ][i-1]
+  end
+
+  def self.aside(i)
+    [
+     nil,
+    "It wriggled and jiggled and tickled inside her.",
+    "How absurd to swallow a bird!",
+    "Imagine that, to swallow a cat!",
+    "What a hog, to swallow a dog!",
+    "Just opened her throat and swallowed a goat!",
+    "I don't know how she swallowed a cow!",
     ][i-1]
   end
 end
