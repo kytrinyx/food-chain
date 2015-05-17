@@ -4,6 +4,7 @@ require_relative 'food_chain'
 
 # rubocop:disable Metrics/MethodLength, Metrics/LineLength
 class FoodChainTest < Minitest::Test
+
   def test_fly
     expected = "" \
       "I know an old lady who swallowed a fly.\n" \

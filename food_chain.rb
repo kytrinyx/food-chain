@@ -12,55 +12,21 @@ module FoodChain
     when 1
       "I know an old lady who swallowed #{morsel(number)}.\n" \
       "I don't know why she swallowed the fly. Perhaps she'll die."
-    when 2
+    when 2..7
       "I know an old lady who swallowed #{morsel(number)}.\n" \
       "#{aside(number)}\n" \
-      "She swallowed #{predator(number)} to catch #{prey(number)}.\n" \
-      "I don't know why she swallowed the fly. Perhaps she'll die."
-    when 3
-      "I know an old lady who swallowed #{morsel(number)}.\n" \
-      "#{aside(number)}\n" \
-      "She swallowed #{predator(number)} to catch #{prey(number)}.\n" \
-      "She swallowed the spider to catch the fly.\n" \
-      "I don't know why she swallowed the fly. Perhaps she'll die."
-    when 4
-      "I know an old lady who swallowed #{morsel(number)}.\n" \
-      "#{aside(number)}\n" \
-      "She swallowed #{predator(number)} to catch #{prey(number)}.\n" \
-      "She swallowed the bird to catch the spider that wriggled and jiggled and tickled inside her.\n" \
-      "She swallowed the spider to catch the fly.\n" \
-      "I don't know why she swallowed the fly. Perhaps she'll die."
-    when 5
-      "I know an old lady who swallowed #{morsel(number)}.\n" \
-      "#{aside(number)}\n" \
-      "She swallowed #{predator(number)} to catch #{prey(number)}.\n" \
-      "She swallowed the cat to catch the bird.\n" \
-      "She swallowed the bird to catch the spider that wriggled and jiggled and tickled inside her.\n" \
-      "She swallowed the spider to catch the fly.\n" \
-      "I don't know why she swallowed the fly. Perhaps she'll die."
-    when 6
-      "I know an old lady who swallowed #{morsel(number)}.\n" \
-      "#{aside(number)}\n" \
-      "She swallowed #{predator(number)} to catch #{prey(number)}.\n" \
-      "She swallowed the dog to catch the cat.\n" \
-      "She swallowed the cat to catch the bird.\n" \
-      "She swallowed the bird to catch the spider that wriggled and jiggled and tickled inside her.\n" \
-      "She swallowed the spider to catch the fly.\n" \
-      "I don't know why she swallowed the fly. Perhaps she'll die."
-    when 7
-      "I know an old lady who swallowed #{morsel(number)}.\n" \
-      "#{aside(number)}\n" \
-      "She swallowed #{predator(number)} to catch #{prey(number)}.\n" \
-      "She swallowed the goat to catch the dog.\n" \
-      "She swallowed the dog to catch the cat.\n" \
-      "She swallowed the cat to catch the bird.\n" \
-      "She swallowed the bird to catch the spider that wriggled and jiggled and tickled inside her.\n" \
-      "She swallowed the spider to catch the fly.\n" \
+      "#{chain(number)}" \
       "I don't know why she swallowed the fly. Perhaps she'll die."
     when 8
       "I know an old lady who swallowed #{morsel(number)}.\n" \
       "She's dead, of course!"
     end
+  end
+
+  def self.chain(i)
+    i.downto(2).map {|number|
+      "She swallowed #{predator(number)} to catch #{prey(number)}.\n"
+    }.join("")
   end
 
   def self.morsel(i)
